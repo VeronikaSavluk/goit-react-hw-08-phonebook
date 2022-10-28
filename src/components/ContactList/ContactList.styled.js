@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const List = styled.ul`
-padding: 10px;
+padding: 0;
 margin: 0;
 list-style: none;
 `;
@@ -21,7 +21,7 @@ padding: 0;
 export const Delete = styled.button`
 padding: 4px;
 margin: 0;
-width: 65px;
+width: 80px;
 font-size: 9px;
 border-radius: 15px;
 border-color: #1E90FF;
