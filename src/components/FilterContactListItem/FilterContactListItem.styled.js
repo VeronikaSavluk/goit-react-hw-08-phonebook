@@ -4,7 +4,7 @@ export const ContactBook = styled.div`
 display: flex;
 flex-direction: column;
 margin: 0;
-padding: 10px;
+padding: 0;
 `;
 export const NameInput = styled.input`
 margin-bottom: 10px;
