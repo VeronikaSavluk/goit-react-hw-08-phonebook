@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addContact } from "redux/contactsSlice";
+import { addContact } from "redux/operations";
 
 import { nanoid } from "nanoid";
 import {ErrorMessage, Formik} from "formik";
