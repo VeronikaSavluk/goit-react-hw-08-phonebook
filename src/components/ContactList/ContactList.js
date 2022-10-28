@@ -1,16 +1,17 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteContact } from "redux/contactsSlice";
-import { getContacts, getFilter } from "redux/selectors";
+import { selectorItems, selectorFilter } from "redux/selectors";
+import { deleteContact } from "redux/operations";
 import { List, ContactItem, DataContact, Delete } from "./ContactList.styled";
 
 const ContactList = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
-    const filter = useSelector(getFilter);
+    const items = useSelector(selectorItems);
+    const filter = useSelector(selectorFilter);
+
     const visibleContacts = filter
-        ? contacts.filter(contact => contact.name.toLowerCase().includes(filter))
-        : contacts;
+        ? items.filter(contact => contact.name.toLowerCase().includes(filter))
+        : items;
 
     return (
         <List>
