@@ -6,8 +6,14 @@ import { selectItems } from "redux/selectors";
 import { nanoid } from "nanoid";
 import {ErrorMessage, Formik} from "formik";
 import * as yup from "yup";
-
-import { Wrapper, NameLable, Input, ErrorBox, Error, SubitForm } from "./ContactForm.styled";
+import {
+    Wrapper,
+    NameLable,
+    Input,
+    ErrorBox,
+    Error,
+    SubitForm
+} from "./ContactForm.styled";
 
 const NameInputId = nanoid();
 const NumberInputId = nanoid();
