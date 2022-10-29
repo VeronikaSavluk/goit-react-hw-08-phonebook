@@ -40,6 +40,10 @@ background-color: #1E90FF;
 color: #FFF8DC;
 `;
 
+export const ErrorBox = styled.div`
+height: 12px;
+`;
+
 export const Error = styled.div`
 margin-bottom: 10px;
 font-size: 10px;
