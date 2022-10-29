@@ -14,7 +14,7 @@ margin-botton: 10px;
 font-size: 18px;
 `;
 
-export const LoaderPlace = styled.div`
+export const LoaderBox = styled.div`
 height: 18px;
 text-align: center;
 `;
