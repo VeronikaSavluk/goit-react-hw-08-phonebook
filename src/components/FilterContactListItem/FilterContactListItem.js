@@ -2,7 +2,6 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../redux/filterSlice";
 import { nanoid } from "nanoid";
-
 import { ContactBook, NameInput } from "./FilterContactListItem.styled";
 import { NameLable } from "../ContactForm/ContactForm.styled";
 
