@@ -1,24 +1,19 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
-import { selectItems, selectFilter } from "redux/selectors";
+import { selectVisibleContacts } from "redux/selectors";
 import { deleteContact } from "redux/operations";
-import { List, ContactItem, DataContact, Delete } from "./ContactList.styled";
+import { List, ContactItem, ContactName, ContactNumber, Delete } from "./ContactList.styled";
 
 const ContactList = () => {
     const dispatch = useDispatch();
-    const items = useSelector(selectItems);
-    const filter = useSelector(selectFilter);
-
-    const visibleContacts = filter
-        ? items.filter(contact => contact.name.toLowerCase().includes(filter))
-        : items;
+    const visibleContacts = useSelector(selectVisibleContacts);
 
     return (
         <List>
             {visibleContacts.map(({ id, name, number }) => (
                 <ContactItem key={id}>
-                    <DataContact>{name}:</DataContact>
-                    <DataContact>{number}</DataContact>
+                    <ContactName>{name}:</ContactName>
+                    <ContactNumber>{number}</ContactNumber>
                     <Delete onClick={() => dispatch(deleteContact(id))}>Delete</Delete>
                 </ContactItem>
             ))}
