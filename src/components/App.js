@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchContacts } from "redux/operations";
-import { selectorIsLoading, selectorError } from "redux/selectors";
+import { selectIsLoading, selectError } from "redux/selectors";
 import ContactForm from './ContactForm';
 import FilterContactList from './FilterContactListItem';
 import Loader from "./Loader";
 import ContactList from './ContactList';
-import { Container, Title, LoaderPlace, ErrorMessage } from './Container.styled';
+import { Container, Title, LoaderBox, ErrorMessage } from './Container.styled';
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectorIsLoading);
-  const error = useSelector(selectorError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -23,10 +23,10 @@ function App() {
       <ContactForm />
       <Title>Contacts</Title>
       <FilterContactList />
-      <LoaderPlace>
+      <LoaderBox>
         {isLoading && !error && <Loader />}
         {error && <ErrorMessage>{error}</ErrorMessage>}
-      </LoaderPlace>
+      </LoaderBox>
       <ContactList />
     </Container>
   );
