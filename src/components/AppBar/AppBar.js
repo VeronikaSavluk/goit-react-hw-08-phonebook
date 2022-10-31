@@ -1,6 +1,5 @@
 import Navigation from "components/Navigation/Navigation";
 import UserMenu from "../UserMenu/UserMenu";
-import Register from "../Register/Register";
 import AuthNav from "../AuthNav/AuthNav";
 
 const AppBar = () => {
@@ -8,8 +7,7 @@ const AppBar = () => {
         <Navigation />
         <UserMenu />
         <AuthNav />
-        <Register />
-</header>
+    </header>
 };
 
 export default AppBar;
