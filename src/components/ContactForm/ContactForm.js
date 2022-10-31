@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import { addContact } from "redux/operations";
+import contactsOperations from "redux/operations";
 import { useSelector } from "react-redux";
 import { selectItems } from "redux/selectors";
 import { nanoid } from "nanoid";
@@ -35,7 +35,7 @@ function ContactForm() {
             alert(`${values.name} is already in contacts`);
             return;
         };
-        dispatch(addContact(values));
+        dispatch(contactsOperations.addContact(values));
         resetForm();
     };
 
