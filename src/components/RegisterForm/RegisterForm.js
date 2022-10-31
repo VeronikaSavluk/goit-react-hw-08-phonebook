@@ -1,6 +1,8 @@
+import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
 import * as yup from "yup";
 import { ErrorMessage, Formik } from "formik";
+import authOperations from "redux/auth/operations";
 import {
     Wrapper,
     NameLable,
@@ -8,10 +10,12 @@ import {
     ErrorBox,
     Error,
     SubitForm
-} from "./ContactForm.styled";
+} from "../ContactForm/ContactForm.styled";
 
 const NameInputId = nanoid();
-const NumberInputId = nanoid();
+const EmailInputId = nanoid();
+const PasswordInputId = nanoid();
+
 const initialValues = {
     name: '',
     email: '',
@@ -23,14 +27,20 @@ const schema = yup.object().shape({
     email: yup.string().email().required(),
     password: yup.mixed(),
 });
+
 const RegisterForm = () => {
+    const dispatch = useDispatch();
+    const handleSubmit = (values, resetForm) => {
+        dispatch(authOperations.register(values));
+        resetForm();
+    };
 
     return (
         <div>
             <Formik
             initialValues={initialValues}
             validationSchema={schema}
-            // onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             >
                 <Wrapper>
                     <NameLable htmlFor={NameInputId}>Name</NameLable>
@@ -43,25 +53,25 @@ const RegisterForm = () => {
                     required
                     />
                     <ErrorBox><ErrorMessage name="name" render={msg => <Error>{`Please, enter Name`}</Error>} /></ErrorBox>
-                    <NameLable htmlFor={NumberInputId}>Email</NameLable>
+                    <NameLable htmlFor={EmailInputId}>Email</NameLable>
                     <Input
                     type="email"
                     name="email"
                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                     title="Email must be a valid email address"
-                    id={NumberInputId}
+                    id={EmailInputId}
                     required
                     />
                     <ErrorBox><ErrorMessage name="email" render={msg => <Error>{`Please, enter Email`}</Error>}/></ErrorBox>
-                    <NameLable htmlFor={NumberInputId}>Password</NameLable>
+                    <NameLable htmlFor={PasswordInputId}>Password</NameLable>
                     <Input
                     type="password"
                     name="password"
-                    id={NumberInputId}
+                    id={PasswordInputId}
                     required
                     />
                     <ErrorBox><ErrorMessage name="password" render={msg => <Error>{`Please, enter Password`}</Error>}/></ErrorBox>
-                    <SubitForm type="submit" name="Add contact">Register</SubitForm>
+                    <SubitForm type="submit" name="Register">Register</SubitForm>
                 </Wrapper>
             </Formik>
         </div>
