@@ -1,34 +1,26 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { fetchContacts } from "redux/operations";
-import { selectIsLoading, selectError } from "redux/selectors";
-import ContactForm from './ContactForm';
-import FilterContactList from './FilterContactListItem';
-import Loader from "./Loader";
-import ContactList from './ContactList';
-import { Container, Title, LoaderBox, ErrorMessage } from './Container.styled';
+import {Routes, Route} from "react-router-dom"
+import Layout from "./Layout";
+import Home from "../page/Home/Home";
+import Register from "page/Register/Register";
+import Login from "page/Login.js/Login";
+import Contacts from "page/Contacts/Contacts";
+// import RestrictedRoute from "./RegisteredRoute";
+// import PrivateRoute from "./PrivateRoute";
+
 
 function App() {
-  const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
 
   return (
-    <Container>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <Title>Contacts</Title>
-      <FilterContactList />
-      <LoaderBox>
-        {isLoading && !error && <Loader />}
-        {error && <ErrorMessage>{error}</ErrorMessage>}
-      </LoaderBox>
-      <ContactList />
-    </Container>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout/>}>
+        <Route index element={<Home/>}/>
+        <Route path="/register" element={<Register />}/>
+        <Route path="/login" element={<Login />}/>
+        <Route path="/contacts" element={<Contacts />}/>
+        </Route>
+      </Routes>
+    </>
   );
 }
 
