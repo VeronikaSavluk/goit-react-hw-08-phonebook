@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { selectVisibleContacts } from "redux/contacts/selectors";
-import contactsOperations from "redux/contacts/operations";
+import {deleteContact} from "redux/contacts/operations";
 import { List, ContactItem, ContactName, ContactNumber, Delete } from "./ContactList.styled";
 
 const ContactList = () => {
@@ -14,7 +14,7 @@ const ContactList = () => {
                 <ContactItem key={id}>
                     <ContactName>{name}:</ContactName>
                     <ContactNumber>{number}</ContactNumber>
-                    <Delete onClick={() => dispatch(contactsOperations.deleteContact(id))}>Delete</Delete>
+                    <Delete onClick={() => dispatch(deleteContact(id))}>Delete</Delete>
                 </ContactItem>
             ))}
         </List>

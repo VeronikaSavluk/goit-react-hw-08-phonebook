@@ -1,27 +1,38 @@
-import {Routes, Route} from "react-router-dom"
+import { useEffect, lazy } from "react";
+import { Routes, Route } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
 import Layout from "./Layout";
-import Home from "../page/Home/Home";
-import Register from "page/Register/Register";
-import Login from "page/Login.js/Login";
-import Contacts from "page/Contacts/Contacts";
-// import RestrictedRoute from "./RegisteredRoute";
-// import PrivateRoute from "./PrivateRoute";
+import Loader from "./Loader"
+import {fetchCurrentUser} from "redux/auth/operations";
+import RestrictedRoute from "./RestrictedRoute";
+import PrivateRoute from "./PrivateRoute";
+import { selectIsRefreshing } from "redux/auth/selectors";
 
+const HomePage = lazy(() => import("page/Home/Home"));
+const RegisterPage = lazy(() => import("page/Register/Register"));
+const LoginPage = lazy(() => import("page/Login.js/Login"));
+const ContactsPage = lazy(() => import("page/Contacts/Contacts"));
 
 function App() {
+  const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing);
 
-  return (
-    <>
+  useEffect(() => {
+    dispatch(fetchCurrentUser());
+  }, [dispatch]);
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
       <Routes>
         <Route path="/" element={<Layout/>}>
-        <Route index element={<Home/>}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/contacts" element={<Contacts />}/>
+        <Route index element={<HomePage/>}/>
+          <Route path="/register" element={<RestrictedRoute path="/contacts" component={<RegisterPage />} />} />
+          <Route path="/login" element={<RestrictedRoute path="/contacts" component={<LoginPage />} />} />
+        <Route path="/contacts" element={<PrivateRoute path="/login" component={<ContactsPage />} />} />
         </Route>
       </Routes>
-    </>
   );
-}
+};
 
 export default App;

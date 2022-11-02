@@ -12,27 +12,35 @@ const token = {
     }
 };
 
-const register = createAsyncThunk("auth/register", async (credential, thunkAPI) => {
+export const register = createAsyncThunk(
+    "auth/register",
+    async (credential, thunkAPI) => {
     try {
         const { data } = await axios.post("/users/signup", credential);
         token.set(data.token);
         return data;
     } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
+        console.log(e.message);
+        return thunkAPI.rejectWithValue("User creation error");
     }
 });
 
-const logIn = createAsyncThunk("auth/login", async (credential, thunkAPI) => {
+export const logIn = createAsyncThunk(
+    "auth/login",
+    async (credential, thunkAPI) => {
     try {
         const { data } = await axios.post("/users/login", credential);
         token.set(data.token);
         return data;
     } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
+        console.log(e.message);
+        return thunkAPI.rejectWithValue("Login error");
     }
 });
 
-const logOut = createAsyncThunk("auth/logout", async (credential, thunkAPI) => {
+export const logOut = createAsyncThunk(
+    "auth/logout",
+    async (credential, thunkAPI) => {
     try {
         const { data } = await axios.post("/users/logout", credential);
         token.unset(data.token);
@@ -42,10 +50,22 @@ const logOut = createAsyncThunk("auth/logout", async (credential, thunkAPI) => {
     }
 });
 
-const authOperations = {
-    register,
-    logIn,
-    logOut,
-};
+export const fetchCurrentUser = createAsyncThunk(
+    "auth/refresh",
+    async (_, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.token;
 
-export default authOperations;
+    if (persistedToken === null) {
+        return thunkAPI.rejectWithValue('Unable to fetch user');
+    };
+
+    token.set(persistedToken);
+
+    try {
+        const { data } = await axios.get("/users/current");
+        return data;
+    } catch (e) {
+        return thunkAPI.rejectWithValue(e.message);
+    };
+});

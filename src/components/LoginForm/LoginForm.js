@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
 import * as yup from "yup";
 import { ErrorMessage, Formik } from "formik";
-import authOperations from "redux/auth/operations";
+import {logIn} from "redux/auth/operations";
 import {
     Wrapper,
     NameLable,
@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 const LoginForm = () => {
     const dispatch = useDispatch();
     const handleSubmit = (values, {resetForm}) => {
-        dispatch(authOperations.logIn(values));
+        dispatch(logIn(values));
         resetForm();
     };
 
