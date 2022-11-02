@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
-import contactsOperations from "redux/operations";
+import contactsOperations from "redux/contacts/operations";
 import { useSelector } from "react-redux";
-import { selectItems } from "redux/selectors";
+import { selectItems } from "redux/contacts/selectors";
 import { nanoid } from "nanoid";
 import {ErrorMessage, Formik} from "formik";
 import * as yup from "yup";
