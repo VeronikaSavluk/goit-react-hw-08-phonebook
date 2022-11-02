@@ -30,7 +30,7 @@ const schema = yup.object().shape({
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
-    const handleSubmit = (values, resetForm) => {
+    const handleSubmit = (values, {resetForm}) => {
         dispatch(authOperations.register(values));
         resetForm();
     };
