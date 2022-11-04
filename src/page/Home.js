@@ -1,4 +1,4 @@
-import ThemeImage from "../images/phonebook1.png";
+import ThemeImage from "../images/phonebook.png";
 import { Heading } from "@chakra-ui/react";
 
 const Home = () => {
