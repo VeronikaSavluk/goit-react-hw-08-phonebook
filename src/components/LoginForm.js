@@ -2,7 +2,7 @@ import { useDispatch } from "react-redux";
 import { nanoid } from "nanoid";
 import * as yup from "yup";
 import { ErrorMessage, Formik } from "formik";
-import {register} from "redux/auth/operations";
+import {logIn} from "redux/auth/operations";
 import {
     Wrapper,
     NameLable,
@@ -10,28 +10,25 @@ import {
     ErrorBox,
     Error,
     SubitForm
-} from "../ContactForm/ContactForm.styled";
+} from "./ContactForm/ContactForm.styled";
 
-const NameInputId = nanoid();
 const EmailInputId = nanoid();
 const PasswordInputId = nanoid();
 
 const initialValues = {
-    name: '',
     email: '',
     password: ''
 };
 
 const schema = yup.object().shape({
-    name: yup.string().required(),
     email: yup.string().email().required(),
     password: yup.mixed(),
 });
 
-const RegisterForm = () => {
+const LoginForm = () => {
     const dispatch = useDispatch();
     const handleSubmit = (values, {resetForm}) => {
-        dispatch(register(values));
+        dispatch(logIn(values));
         resetForm();
     };
 
@@ -43,16 +40,6 @@ const RegisterForm = () => {
             onSubmit={handleSubmit}
             >
                 <Wrapper>
-                    <NameLable htmlFor={NameInputId}>Name</NameLable>
-                    <Input
-                    type="text"
-                    name="name"
-                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                    title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                    id={NameInputId}
-                    required
-                    />
-                    <ErrorBox><ErrorMessage name="name" render={msg => <Error>{`Please, enter Name`}</Error>} /></ErrorBox>
                     <NameLable htmlFor={EmailInputId}>Email</NameLable>
                     <Input
                     type="email"
@@ -71,11 +58,11 @@ const RegisterForm = () => {
                     required
                     />
                     <ErrorBox><ErrorMessage name="password" render={msg => <Error>{`Please, enter Password`}</Error>}/></ErrorBox>
-                    <SubitForm type="submit" name="Register">Register</SubitForm>
+                    <SubitForm type="submit" name="Log in">Log in</SubitForm>
                 </Wrapper>
             </Formik>
         </div>
     )
 }
 
-export default RegisterForm;
+export default LoginForm;

@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import RegisterForm from "components/RegisterForm/RegisterForm";
-import { selectError } from "../../redux/auth/selectors";
+import RegisterForm from "components/RegisterForm";
+import { selectError } from "../redux/auth/selectors";
 import { ErrorMessage } from "components/Container.styled";
 
 const Register = () => {

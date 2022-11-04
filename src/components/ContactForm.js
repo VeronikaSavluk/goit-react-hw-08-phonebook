@@ -13,7 +13,7 @@ import {
     ErrorBox,
     Error,
     SubitForm
-} from "./ContactForm.styled";
+} from "./ContactForm/ContactForm.styled";
 
 const NameInputId = nanoid();
 const NumberInputId = nanoid();

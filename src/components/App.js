@@ -7,11 +7,12 @@ import {fetchCurrentUser} from "redux/auth/operations";
 import RestrictedRoute from "./RestrictedRoute";
 import PrivateRoute from "./PrivateRoute";
 import { selectIsRefreshing } from "redux/auth/selectors";
+import {Container} from "@chakra-ui/react";
 
-const HomePage = lazy(() => import("page/Home/Home"));
-const RegisterPage = lazy(() => import("page/Register/Register"));
-const LoginPage = lazy(() => import("page/Login.js/Login"));
-const ContactsPage = lazy(() => import("page/Contacts/Contacts"));
+const HomePage = lazy(() => import("page/Home"));
+const RegisterPage = lazy(() => import("page/Register"));
+const LoginPage = lazy(() => import("page/Login"));
+const ContactsPage = lazy(() => import("page/Contacts"));
 
 function App() {
   const dispatch = useDispatch();
@@ -21,17 +22,19 @@ function App() {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  return isRefreshing ? (
-    <Loader />
-  ) : (
-      <Routes>
-        <Route path="/" element={<Layout/>}>
-        <Route index element={<HomePage/>}/>
-          <Route path="/register" element={<RestrictedRoute path="/contacts" component={<RegisterPage />} />} />
-          <Route path="/login" element={<RestrictedRoute path="/contacts" component={<LoginPage />} />} />
-        <Route path="/contacts" element={<PrivateRoute path="/login" component={<ContactsPage />} />} />
-        </Route>
-      </Routes>
+  return (
+    <Container p={20}>
+      {isRefreshing
+        ? <Loader />
+        : <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/register" element={<RestrictedRoute path="/contacts" component={<RegisterPage />} />} />
+            <Route path="/login" element={<RestrictedRoute path="/contacts" component={<LoginPage />} />} />
+            <Route path="/contacts" element={<PrivateRoute path="/login" component={<ContactsPage />} />} />
+          </Route>
+        </Routes>}
+    </Container>
   );
 };
 

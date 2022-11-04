@@ -1,15 +1,17 @@
 import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import AppBar from "components/AppBar/AppBar";
+import AppBar from "components/AppBar";
+import { Box } from "@chakra-ui/react";
 
 const Layout = () => {
+
     return (
-        <div>
+        <Box>
             <AppBar />
             <Suspense fallback={null}>
                 <Outlet />
             </Suspense>
-        </div>
+        </Box>
     );
 };
 

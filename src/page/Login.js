@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import LoginForm from "components/LoginForm/LoginForm";
+import LoginForm from "components/LoginForm";
 import { selectError } from "redux/auth/selectors";
 import { ErrorMessage } from "components/Container.styled";
 
