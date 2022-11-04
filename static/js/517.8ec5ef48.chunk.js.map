@@ -1,1 +1,0 @@
-{"version":3,"file":"static/js/517.8ec5ef48.chunk.js","mappings":"kKAQA,UARa,WACT,OACI,0BACA,uDAGP,C","sources":["page/Home/Home.js"],"sourcesContent":["const Home = () => {\n    return (\n        <div>\n        <h1>Create your own phonebook</h1>\n        </div>\n    )\n}\n\nexport default Home;"],"names":[],"sourceRoot":""}
