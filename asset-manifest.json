@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.js": "/goit-react-hw-08-phonebook/static/js/main.ae0b3440.js",
-    "static/js/513.0d29587a.chunk.js": "/goit-react-hw-08-phonebook/static/js/513.0d29587a.chunk.js",
+    "main.js": "/goit-react-hw-08-phonebook/static/js/main.cf02552f.js",
+    "static/js/513.90501975.chunk.js": "/goit-react-hw-08-phonebook/static/js/513.90501975.chunk.js",
     "static/js/292.5e941a88.chunk.js": "/goit-react-hw-08-phonebook/static/js/292.5e941a88.chunk.js",
     "static/js/670.5ecd4c24.chunk.js": "/goit-react-hw-08-phonebook/static/js/670.5ecd4c24.chunk.js",
-    "static/js/809.719a4fe2.chunk.js": "/goit-react-hw-08-phonebook/static/js/809.719a4fe2.chunk.js",
+    "static/js/989.25506861.chunk.js": "/goit-react-hw-08-phonebook/static/js/989.25506861.chunk.js",
     "static/js/449.62264091.chunk.js": "/goit-react-hw-08-phonebook/static/js/449.62264091.chunk.js",
     "static/media/phonebook.png": "/goit-react-hw-08-phonebook/static/media/phonebook.98f5b379aafdabf54e6d.png",
     "index.html": "/goit-react-hw-08-phonebook/index.html",
-    "main.ae0b3440.js.map": "/goit-react-hw-08-phonebook/static/js/main.ae0b3440.js.map",
-    "513.0d29587a.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/513.0d29587a.chunk.js.map",
+    "main.cf02552f.js.map": "/goit-react-hw-08-phonebook/static/js/main.cf02552f.js.map",
+    "513.90501975.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/513.90501975.chunk.js.map",
     "292.5e941a88.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/292.5e941a88.chunk.js.map",
     "670.5ecd4c24.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/670.5ecd4c24.chunk.js.map",
-    "809.719a4fe2.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/809.719a4fe2.chunk.js.map",
+    "989.25506861.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/989.25506861.chunk.js.map",
     "449.62264091.chunk.js.map": "/goit-react-hw-08-phonebook/static/js/449.62264091.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.ae0b3440.js"
+    "static/js/main.cf02552f.js"
   ]
 }
