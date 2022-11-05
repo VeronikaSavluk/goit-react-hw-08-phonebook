@@ -2,7 +2,13 @@ import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
 import { selectVisibleContacts } from "redux/contacts/selectors";
 import {deleteContact} from "redux/contacts/operations";
-import { List, ContactItem, ContactName, ContactNumber, Delete } from "./ContactList/ContactList.styled";
+import {
+    List,
+    ListItem,
+    Grid,
+    GridItem,
+    Button
+} from '@chakra-ui/react';
 
 const ContactList = () => {
     const dispatch = useDispatch();
@@ -11,11 +17,17 @@ const ContactList = () => {
     return (
         <List>
             {visibleContacts.map(({ id, name, number }) => (
-                <ContactItem key={id}>
-                    <ContactName>{name}:</ContactName>
-                    <ContactNumber>{number}</ContactNumber>
-                    <Delete onClick={() => dispatch(deleteContact(id))}>Delete</Delete>
-                </ContactItem>
+                <ListItem key={id}>
+                    <Grid templateAreas={`'name number button'`}
+                        templateColumns='repeat(5, 1fr)'
+                        gap='1'>
+                        <GridItem colSpan={2} pl={3} area={'name'}>{name}:</GridItem>
+                        <GridItem colSpan={2} pl={3} area={'number'}>{number}</GridItem>
+                        <GridItem colSpan={1} area={'button'}>
+                            <Button onClick={() => dispatch(deleteContact(id))}>Delete</Button>
+                        </GridItem>
+                    </Grid>
+                </ListItem>
             ))}
         </List>
     );
