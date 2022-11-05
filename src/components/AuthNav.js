@@ -1,5 +1,4 @@
 import {
-    Box,
     Breadcrumb,
     BreadcrumbItem,
     BreadcrumbLink,
@@ -7,16 +6,14 @@ import {
 
 const AuthNav = () => {
     return (
-        <Box>
-            <Breadcrumb separator=' ' p={20} fontWeight={700}>
-                <BreadcrumbItem>
-                    <BreadcrumbLink href="/register">Register</BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbItem>
-                    <BreadcrumbLink href="/login">Log In</BreadcrumbLink>
-                </BreadcrumbItem>
-            </Breadcrumb>
-        </Box>
+        <Breadcrumb separator=' ' p={20} fontWeight={700}>
+            <BreadcrumbItem>
+                <BreadcrumbLink href="/register">Register</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+                <BreadcrumbLink href="/login">Log In</BreadcrumbLink>
+            </BreadcrumbItem>
+        </Breadcrumb>
     );
 };
 
