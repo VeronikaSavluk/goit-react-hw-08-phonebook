@@ -2,8 +2,7 @@ import PropTypes from "prop-types";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../redux/contacts/filterSlice";
 import { nanoid } from "nanoid";
-import { ContactBook, NameInput } from "./FilterContactListItem/FilterContactListItem.styled";
-import { NameLable } from "./ContactForm/ContactForm.styled";
+import { Box, Input } from '@chakra-ui/react';
 
 const FilterContactList = () => {
     const QueryInputId = nanoid();
@@ -16,15 +15,14 @@ const FilterContactList = () => {
     };
 
     return (
-        <ContactBook>
-            <NameLable htmlFor={QueryInputId}>Find contacts by name</NameLable>
-            <NameInput
+        <Box mb={10} border="none" borderRadius={5}>
+            <Input placeholder='Find contacts by name'
                 type="text"
                 name="value"
                 id={QueryInputId}
                 onChange={handleChange}
         />
-        </ContactBook>
+        </Box>
     )
 }
 
