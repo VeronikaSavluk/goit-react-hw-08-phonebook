@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
-import { selectVisibleContacts } from "redux/contacts/selectors";
-import {deleteContact} from "redux/contacts/operations";
+import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectVisibleContacts } from 'redux/contacts/selectors';
+import {deleteContact} from 'redux/contacts/operations';
 import {
     List,
     ListItem,
@@ -20,11 +20,17 @@ const ContactList = () => {
                 <ListItem key={id}>
                     <Grid templateAreas={`'name number button'`}
                         templateColumns='repeat(5, 1fr)'
-                        gap='1'>
-                        <GridItem colSpan={2} pl={3} area={'name'}>{name}:</GridItem>
+                        justifyItems='end' gap='1'>
+                        <GridItem colSpan={2} pl={3} justifySelf='start' area={'name'}>{name}:</GridItem>
                         <GridItem colSpan={2} pl={3} area={'number'}>{number}</GridItem>
                         <GridItem colSpan={1} area={'button'}>
-                            <Button onClick={() => dispatch(deleteContact(id))}>Delete</Button>
+                            <Button w={70} mb={5}
+                                fontSize={14} fontWeight='500'
+                                border='none' borderRadius={5}
+                                bg='#f1b61ff1' color='#4d4c4c'
+                                type='submit' name='Delete'
+                                onClick={() => dispatch(deleteContact(id))}
+                            >Delete</Button>
                         </GridItem>
                     </Grid>
                 </ListItem>

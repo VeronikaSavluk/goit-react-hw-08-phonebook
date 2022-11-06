@@ -1,23 +1,24 @@
-import { useSelector } from "react-redux";
-import { selectIsLoggedIn } from "redux/auth/selectors";
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-} from "@chakra-ui/react";
+import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { selectIsLoggedIn } from 'redux/auth/selectors';
+import { List, ListItem } from '@chakra-ui/react';
 
 const Navigation = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
-    return <Breadcrumb separator=' ' p={20} fontWeight={700}>
-            <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-            </BreadcrumbItem>
+    return (
+        <List as='nav' fontWeight={700}>
+            <ListItem as={NavLink} to='/' mr={15}>Home</ListItem>
             {isLoggedIn && (
-            <BreadcrumbItem>
-                <BreadcrumbLink href="/contacts">Contacts</BreadcrumbLink>
-            </BreadcrumbItem>)}
-        </Breadcrumb>;
+            <ListItem as={NavLink} to='/contacts'>Contacts</ListItem>
+            )}
+        </List>
+    );
+};
+
+Navigation.propTypes = {
+    isLoggedIn: PropTypes.string,
 };
 
 export default Navigation;

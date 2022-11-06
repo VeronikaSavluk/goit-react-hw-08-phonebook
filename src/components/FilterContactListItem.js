@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { useDispatch } from "react-redux";
-import { setFilter } from "../redux/contacts/filterSlice";
-import { nanoid } from "nanoid";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { setFilter } from '../redux/contacts/filterSlice';
+import { nanoid } from 'nanoid';
 import { Box, Input } from '@chakra-ui/react';
 
 const FilterContactList = () => {
@@ -15,10 +15,13 @@ const FilterContactList = () => {
     };
 
     return (
-        <Box mb={10} border="none" borderRadius={5}>
-            <Input placeholder='Find contacts by name'
-                type="text"
-                name="value"
+        <Box mb={10} border='none'
+            color='#4d4c4c'
+        >
+            <Input pl={4} borderRadius={5}
+                placeholder='Find contacts by name'
+                type='text'
+                name='value'
                 id={QueryInputId}
                 onChange={handleChange}
         />

@@ -1,18 +1,19 @@
-import { useEffect, lazy } from "react";
-import { Routes, Route } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux";
-import Layout from "./Layout";
-import Loader from "./Loader"
-import {fetchCurrentUser} from "redux/auth/operations";
-import RestrictedRoute from "./RestrictedRoute";
-import PrivateRoute from "./PrivateRoute";
-import { selectIsRefreshing } from "redux/auth/selectors";
-import {Container} from "@chakra-ui/react";
+import PropTypes from 'prop-types';
+import { useEffect, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux';
+import Layout from './Layout';
+import Loader from './Loader'
+import {fetchCurrentUser} from 'redux/auth/operations';
+import RestrictedRoute from './RestrictedRoute';
+import PrivateRoute from './PrivateRoute';
+import { selectIsRefreshing } from 'redux/auth/selectors';
+import {VStack} from '@chakra-ui/react';
 
-const HomePage = lazy(() => import("page/Home"));
-const RegisterPage = lazy(() => import("page/Register"));
-const LoginPage = lazy(() => import("page/Login"));
-const ContactsPage = lazy(() => import("page/Contacts"));
+const HomePage = lazy(() => import('page/Home'));
+const RegisterPage = lazy(() => import('page/Register'));
+const LoginPage = lazy(() => import('page/Login'));
+const ContactsPage = lazy(() => import('page/Contacts'));
 
 function App() {
   const dispatch = useDispatch();
@@ -23,19 +24,23 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Container p={20}>
+    <VStack>
       {isRefreshing
         ? <Loader />
         : <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path="/register" element={<RestrictedRoute path="/contacts" component={<RegisterPage />} />} />
-            <Route path="/login" element={<RestrictedRoute path="/contacts" component={<LoginPage />} />} />
-            <Route path="/contacts" element={<PrivateRoute path="/login" component={<ContactsPage />} />} />
+            <Route path='/register' element={<RestrictedRoute path='/contacts' component={<RegisterPage />} />} />
+            <Route path='/login' element={<RestrictedRoute path='/contacts' component={<LoginPage />} />} />
+            <Route path='/contacts' element={<PrivateRoute path='/login' component={<ContactsPage />} />} />
           </Route>
         </Routes>}
-    </Container>
+    </VStack>
   );
+};
+
+App.propTypes = {
+  isRefreshing: PropTypes.bool,
 };
 
 export default App;

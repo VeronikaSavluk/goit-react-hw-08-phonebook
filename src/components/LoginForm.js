@@ -1,19 +1,15 @@
-import { useDispatch } from "react-redux";
-import { nanoid } from "nanoid";
-import * as yup from "yup";
-import { Formik, Form, Field } from "formik";
-import {logIn} from "redux/auth/operations";
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import * as yup from 'yup';
+import { Formik, Form, Field } from 'formik';
+import {logIn} from 'redux/auth/operations';
 import {
     FormControl,
     FormLabel,
     Input,
     Button,
-    FormErrorMessage,
     Flex
-} from "@chakra-ui/react";
-
-const EmailInputId = nanoid();
-const PasswordInputId = nanoid();
+} from '@chakra-ui/react';
 
 const initialValues = {
     email: '',
@@ -22,12 +18,12 @@ const initialValues = {
 
 const schema = yup.object().shape({
     email: yup.string().email().required(),
-    password: yup.mixed(),
+    password: yup.string().required(),
 });
 
 const LoginForm = () => {
     const dispatch = useDispatch();
-    const handleSubmit = (values, {resetForm}) => {
+    const handleSubmit = (values, { resetForm }) => {
         dispatch(logIn(values));
         resetForm();
     };
@@ -39,57 +35,63 @@ const LoginForm = () => {
             border={2}
             borderColor='#FFFFF0'
             borderStyle='solid'
-            borderRadius={15}
+            borderRadius={10}
         >
             <Formik
-            initialValues={initialValues}
-            validationSchema={schema}
-            onSubmit={handleSubmit}
+                initialValues={initialValues}
+                validationSchema={schema}
+                onSubmit={handleSubmit}
             >
                 {(props) => (
                     <Form >
                         <Field
-                            type="email"
-                            name="email"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-                            title="Email must be a valid email address"
-                            id={EmailInputId}
-                            required
+                            type='email'
+                            name='email'
                         >
                             {({ field, form }) => (
-                                <FormControl isInvalid={form.errors.name && form.touched.name}>
-                                    <FormLabel htmlFor={EmailInputId} mb={10}>Email</FormLabel>
-                                    <Input {...field} mb={10} p={4} />
-                                    <FormErrorMessage>{form.errors.name}</FormErrorMessage>
-                                </FormControl>
-                            )}
+                                    <FormControl>
+                                        <FormLabel mb={10}>Email</FormLabel>
+                                        <Input {...field} htmlSize={30}
+                                            borderRadius={5}
+                                        mb={10} p={2} color='#4d4c4c'
+                                    />
+                                    </FormControl>
+                                )
+                            }
                         </Field>
                         <Field
-                            type="password"
-                            name="password"
-                            id={PasswordInputId}
+                            type='password'
+                            name='password'
                             required
                         >
                             {({ field, form }) => (
-                                <FormControl isInvalid={form.errors.name && form.touched.name}>
-                                    <FormLabel htmlFor={PasswordInputId} mb={10}>Password</FormLabel>
-                                    <Input {...field} mb={10} p={4} />
-                                    <FormErrorMessage>{form.errors.name}</FormErrorMessage>
+                                <FormControl>
+                                    <FormLabel mb={10}>Password</FormLabel>
+                                    <Input {...field} htmlSize={30}
+                                        borderRadius={5}
+                                        mb={10} p={2} color='#4d4c4c'
+                                    />
                                 </FormControl>
                             )}
                         </Field>
-                        <Button p={2} ml='auto' mb={10}
+                        <Button my={10} p={2} mb={10}
                             w={100} fontWeight='900'
                             border={1} borderStyle='solid'
-                            borderColor='#f1b61ff1' borderRadius={15}
+                            borderColor='#f1b61ff1' borderRadius={5}
                             bg='#f1b61ff1' color='#4d4c4c'
-                            type="submit" name="Log in">Log in
+                            type='submit' name='Log in'>Log in
                         </Button>
                     </Form>
                 )}
             </Formik>
         </Flex>
-    )
-}
+    );
+};
+
+LoginForm.propTypes = {
+    handleSubmit: PropTypes.func,
+    field: PropTypes.object,
+    form: PropTypes.object,
+};
 
 export default LoginForm;
