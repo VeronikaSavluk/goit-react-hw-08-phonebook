@@ -7,7 +7,6 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import {
     FormControl,
-    FormLabel,
     Input,
     Button,
     FormErrorMessage,
@@ -41,7 +40,8 @@ function ContactForm() {
     return (
         <Flex direction='column'
             align='center'
-            w={300} p={10}
+            w={{ base: '280px', md: '300px' }} h={230} p={3}
+            mb={{base:'15px', md: '0'}}
             border={2}
             borderColor='#FFFFF0'
             borderStyle='solid'
@@ -57,22 +57,25 @@ function ContactForm() {
                         <Field
                             type='text'
                             name='name'
-                            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                             required
                         >
                             {({ field, form }) => (
-                                <FormControl isInvalid={form.errors.name}>
-                                    <FormLabel mb={10}>Name</FormLabel>
-                                    <Input {...field} htmlSize={30}
-                                        borderRadius={5}
-                                        mb={10} p={2} color='#4d4c4c'
+                                <FormControl mb={1} isInvalid={form.errors.name}>
+                                    <Input {...field} htmlSize='md' color='#FFFFF0' variant='flushed'
+                                    placeholder='Name'
+                                     _placeholder={{ opacity: 0.4, color: 'inherit' }}
+                                    focusBorderColor='#FFFFF0'
+                                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                                     />
-                                    <Box h={35} w={255} fontSize={7}>
-                                        {form.values.name !== '' ? (<FormHelperText>
+                                    <Box h={34} w={255}>
+                                        {form.values.name !== '' ? (
+                                        <FormHelperText fontSize={7} color='#FFFFF0'>
                                             Name may contain only letters, apostrophe, dash and spaces.
                                             For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan
                                         </FormHelperText>) : null}
-                                        <FormErrorMessage color='red'>Name is required</FormErrorMessage>
+                                        <FormErrorMessage fontSize={7} color='red'>
+                                            Name is required
+                                        </FormErrorMessage>
                                     </Box>
                                 </FormControl>
                             )}
@@ -80,31 +83,32 @@ function ContactForm() {
                         <Field
                             type='tel'
                             name='number'
-                            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                             required
                         >
                             {({ field, form }) => (
-                                <FormControl isInvalid={form.errors.name}>
-                                    <FormLabel mb={10}>Number</FormLabel>
-                                    <Input {...field} htmlSize={30}
-                                        borderRadius={5}
-                                        mb={10} p={4} color='#4d4c4c'
+                                <FormControl mb={1} isInvalid={form.errors.name}>
+                                    <Input {...field} htmlSize='md' color='#FFFFF0'
+                                        variant='flushed' inputMode='tel'
+                                        placeholder='Number'
+                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
+                                        focusBorderColor='#FFFFF0'
+                                        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                                     />
-                                    <Box h={35} w={255} fontSize={7}>
-                                        {form.values.number !== '' ? (<FormHelperText>
+                                    <Box h={34} w={255}>
+                                        {form.values.number !== '' ? (
+                                        <FormHelperText fontSize={7} color='#FFFFF0'>
                                             Phone number must be digits and can contain spaces, dashes, parentheses and can start with +
                                         </FormHelperText>) : null}
-                                        <FormErrorMessage color='red'>Number is required</FormErrorMessage>
+                                        <FormErrorMessage fontSize={7} color='red'>Number is required</FormErrorMessage>
                                     </Box>
                                 </FormControl>
                             )}
                         </Field>
-                        <Button p={2} mx='auto' mb={10}
-                            w={120} fontSize={14}
-                            fontWeight='900'
-                            border='none' borderRadius={5}
-                            bg='#f1b61ff1' color='#4d4c4c'
-                            type='submit' name='Add contact'>Add contact
+                        <Button p={2} w={120}
+                            fontSize={14}
+                            fontWeight='bold'
+                            type='submit' name='Add contact'>
+                            Add contact
                         </Button>
                     </Form>
                 )}

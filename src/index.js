@@ -6,8 +6,9 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import App from 'components/App';
 import { ChakraProvider } from '@chakra-ui/react';
-import {theme} from './theme/styles';
+import theme from './theme/index';
 
+console.log(theme)
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -21,3 +22,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
+console.log(theme)

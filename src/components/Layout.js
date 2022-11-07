@@ -6,7 +6,8 @@ import { Container } from '@chakra-ui/react';
 const Layout = () => {
 
     return (
-        <Container w={900} p={20}>
+        <Container border='none' px={{base: '20px', md: '30px'}}
+        >
             <AppBar />
             <Suspense fallback={null}>
                 <Outlet />

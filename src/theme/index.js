@@ -1,17 +1,16 @@
 import { extendTheme } from '@chakra-ui/react';
-import styles from './styles';
-// import borders from './foundations/borders';
-// import Button from './components/button';
-// import Box from './components/box';
+import { breakpoints } from './foundations/breakpoints';
+import { Container } from './components/container';
+import { Button } from './components/button';
+import { styles } from './styles';
 
-const overrides = {
+const theme = {
     styles,
-    // borders,
+    breakpoints,
     components: {
-        // Button,
-        // Box,
-        // Other components go here
+        Button,
+        Container,
     },
 };
 
-export default extendTheme(overrides);
+export default extendTheme(theme);

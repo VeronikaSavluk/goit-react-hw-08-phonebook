@@ -5,7 +5,6 @@ import { Formik, Form, Field } from 'formik';
 import {logIn} from 'redux/auth/operations';
 import {
     FormControl,
-    FormLabel,
     Input,
     Button,
     Flex
@@ -31,7 +30,7 @@ const LoginForm = () => {
     return (
         <Flex direction='column'
             align='center'
-            w={300} p={10}
+            w={280} h={200} p={3}
             border={2}
             borderColor='#FFFFF0'
             borderStyle='solid'
@@ -43,17 +42,18 @@ const LoginForm = () => {
                 onSubmit={handleSubmit}
             >
                 {(props) => (
-                    <Form >
+                    <Form>
                         <Field
                             type='email'
                             name='email'
                         >
                             {({ field, form }) => (
-                                    <FormControl>
-                                        <FormLabel mb={10}>Email</FormLabel>
-                                        <Input {...field} htmlSize={30}
-                                            borderRadius={5}
-                                        mb={10} p={2} color='#4d4c4c'
+                                    <FormControl mb={1} w='250px'>
+                                        <Input {...field} htmlSize='md' mb={5}
+                                        placeholder='Email'
+                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
+                                        focusBorderColor='#FFFFF0'
+                                        color='#FFFFF0' variant='flushed'
                                     />
                                     </FormControl>
                                 )
@@ -65,20 +65,19 @@ const LoginForm = () => {
                             required
                         >
                             {({ field, form }) => (
-                                <FormControl>
-                                    <FormLabel mb={10}>Password</FormLabel>
-                                    <Input {...field} htmlSize={30}
-                                        borderRadius={5}
-                                        mb={10} p={2} color='#4d4c4c'
+                                <FormControl mb={1} w='250px'>
+                                    <Input {...field} htmlSize='md' mb={5}
+                                        placeholder='Password'
+                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
+                                        focusBorderColor='#FFFFF0'
+                                        color='#FFFFF0' variant='flushed'
                                     />
                                 </FormControl>
                             )}
                         </Field>
-                        <Button my={10} p={2} mb={10}
-                            w={100} fontWeight='900'
-                            border={1} borderStyle='solid'
-                            borderColor='#f1b61ff1' borderRadius={5}
-                            bg='#f1b61ff1' color='#4d4c4c'
+                        <Button p={2}
+                            w={100} fontSize={14}
+                            fontWeight='bold'
                             type='submit' name='Log in'>Log in
                         </Button>
                     </Form>

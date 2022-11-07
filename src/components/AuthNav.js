@@ -6,7 +6,7 @@ import {
 
 const AuthNav = () => {
     return (
-        <Breadcrumb separator=' ' fontWeight={700}>
+        <Breadcrumb separator=' ' fontWeight='black' fontSize='xl'>
             <BreadcrumbItem>
                 <BreadcrumbLink href='/register'>Register</BreadcrumbLink>
             </BreadcrumbItem>

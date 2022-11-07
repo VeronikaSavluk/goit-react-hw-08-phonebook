@@ -19,22 +19,28 @@ const Contacts = () => {
     }, [dispatch]);
 
     return <Flex direction='column' justifyContent='space-evenly'>
-        <Heading as='h2' mt={20} mb={30}
-            fontSize={40} fontWeight={700}
-            textAlign='center' noOfLines={1}
-        >Phonebook</Heading>
-        <Flex justifyContent='space-evenly'>
+        <Heading as='h2' mt={{ base: '30px', md: '80px' }}
+            mb={{ base: '10px', md: '30px' }}
+            fontSize={{ base: '2xl', md: '4xl' }}
+            fontWeight='medium'
+            textAlign='center' noOfLines={1}>
+            Phonebook
+        </Heading>
+        <Flex direction={{ base: 'column', md: 'row' }}
+            justifyContent='space-evenly' alignItems='flex-end'>
             <ContactForm />
-            <Flex direction='column' w={500} align='stretch' ml={20}>
-                <Grid templateColumns={'1fr 2fr'} justifyItems='end' alignItems='center'>
-                    <Heading as='h3' mb={10}
-                        fontSize={30} fontWeight={500}
-                        textAlign='center' noOfLines={1}
-                        justifySelf='start'
-                    >Contacts</Heading>
+            <Flex direction='column' w={{base:'280px', md: '355px'}} align='stretch'>
+                <Grid templateColumns={{base:'1fr 1fr', md: '1rf 2fr'}} justifyItems='end' alignItems='center'>
+                    <Heading as='h3' fontSize={{base:'2xl', md: '4xl'}}
+                        fontWeight='medium'
+                        textAlign='center'
+                        noOfLines={1}
+                        justifySelf='start'>
+                        Contacts
+                    </Heading>
                     <FilterContactList />
                 </Grid>
-                <Center mb={10} h={20}>
+                <Center my={1} h='20px'>
                     {isLoading && !error && <Loader />}
                     {error && <Box>{error}</Box>}
                 </Center>

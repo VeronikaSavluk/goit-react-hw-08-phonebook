@@ -8,7 +8,7 @@ const Navigation = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
 
     return (
-        <List as='nav' fontWeight={700}>
+        <List as='nav' fontWeight='black' fontSize='xl'>
             <ListItem as={NavLink} to='/' mr={15}>Home</ListItem>
             {isLoggedIn && (
             <ListItem as={NavLink} to='/contacts'>Contacts</ListItem>

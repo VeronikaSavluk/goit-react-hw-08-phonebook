@@ -9,7 +9,8 @@ const Register = () => {
 
     return <Flex direction='column' align='center'>
         <Heading as='h2' mt={20} mb={30}
-            fontSize={30} fontWeight={500}
+            fontSize={{ base: '2xl', md: '4xl' }}
+            fontWeight='medium'
             textAlign='center' noOfLines={1}
         >Register</Heading>
         <RegisterForm />

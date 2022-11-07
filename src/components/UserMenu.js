@@ -16,14 +16,19 @@ const UserMenu = () => {
     const name = useSelector(selectUserName);
 
     return (
-        <Flex align='center' justify='space-between'>
-            <Text fontSize={12} mr={15} noOfLines={2}>
-                    Welcome to your phonebook, {name}!
+        <Flex direction={{ base: 'column', md: 'row' }}
+            align='center'
+            justify='space-between'
+        >
+            <Text fontSize={{ base: '7', md: '12' }}
+                mb={{ base: '10px', md: 0 }} mr={{ md: '15px' }}
+                textAlign='center' noOfLines={2}
+                w={{ base: '100px', md: '200px' }}>
+                Welcome to your phonebook, {name}!
             </Text>
-            <Button bg='#f1b61ff1' color='#4d4c4c'
-                fontSize={16} fontWeight={700}
-                w={75} h={30} borderRadius={5}
-                variant='outline'
+            <Button
+                fontSize={14} fontWeight='bold'
+                w='80px' h={30} variant='outline'
                 onClick={() => dispatch(logOut())}
             >Log out</Button>
         </Flex>

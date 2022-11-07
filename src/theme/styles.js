@@ -1,16 +1,30 @@
-export const theme = Object.freeze({
-  styles: {
+import { defineStyleConfig } from "@chakra-ui/react";
+
+export const styles = defineStyleConfig(
+  Object.freeze({
     global: {
-      'html, body': {
+      body: {
         m: 0,
+        fontSize: '14px',
         lineHeight: 'base',
-        background: '#4d4c4c',
-        color: '#f1b61ff1',
+        backgroundColor: '#4d4c4c',
+        border: '1px solid',
+        borderColor: 'transparent',
+        color: '#f1b61f',
       },
       a: {
-        color: '#f1b61ff1',
+        color: '#f1b61f',
         textDecoration: 'none',
       },
+      ul: {
+        listStyle: 'none',
+      },
+      img: {
+        height: 'auto',
+      },
+      button: {
+        borderRadius: '4px',
+      },
     },
-  },
-});
+  })
+);

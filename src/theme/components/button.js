@@ -1,5 +1,3 @@
-// import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react'
-
 import { defineStyleConfig } from "@chakra-ui/react";
 
 export const Button = defineStyleConfig({
@@ -11,49 +9,49 @@ export const Button = defineStyleConfig({
   },
 
   sizes: {
+    xs: {
+      fontSize: '7px',
+      px: 1,
+      py: '1px',
+    },
     sm: {
       fontSize: 'sm',
       px: 4,
-      py: 3,
+      py: 2,
     },
     md: {
       fontSize: 'md',
       px: 6,
-      py: 4,
+      py: 2,
     },
   },
 
   variants: {
     outline: {
       border: '2px solid',
-      borderColor: 'yellow.500',
-      color: 'yellow.500',
+      borderColor: '#f1b61f',
+      color: '#f1b61f',
+      _hover: {
+      bg: 'rgba(241, 182, 31, .1)'
+      },
+      _focus: {
+      bg: 'rgba(241, 182, 31, .1)'
+      },
     },
     solid: {
-      bg: 'yellow.500',
-      color: 'white',
+      bg: '#f1b61f',
+      color: '#4d4c4c',
+      _hover: {
+      bg: 'rgba(241, 182, 31, .7)'
+      },
+    _focus: {
+      bg: 'rgba(241, 182, 31, .7)'
+      },
     },
   },
 
   defaultProps: {
-    size: 'md',
-    variant: 'outline',
+    size: 'sm',
+    variant: 'solid',
   },
 });
-
-// const theme = extendTheme({
-//   components: {
-//     Button,
-//   },
-// });
-
-// const customTheme = extendTheme(
-//   withDefaultColorScheme({
-//     colorScheme: 'red',
-//     components: ['Button', 'Badge'],
-//   }),
-//   withDefaultColorScheme({
-//     colorScheme: 'blue',
-//     components: ['Alert', 'Table'],
-//   }),
-// );
