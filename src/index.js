@@ -7,6 +7,7 @@ import { store, persistor } from 'redux/store';
 import {App} from 'components';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from './theme/index';
+import 'modern-normalize';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
