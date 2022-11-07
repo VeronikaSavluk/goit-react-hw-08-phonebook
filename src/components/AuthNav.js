@@ -4,7 +4,7 @@ import {
     BreadcrumbLink,
 } from '@chakra-ui/react';
 
-const AuthNav = () => {
+export const AuthNav = () => {
     return (
         <Breadcrumb separator=' ' fontWeight='black' fontSize='xl'>
             <BreadcrumbItem>
@@ -16,5 +16,3 @@ const AuthNav = () => {
         </Breadcrumb>
     );
 };
-
-export default AuthNav;

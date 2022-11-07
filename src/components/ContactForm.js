@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import {addContact} from 'redux/contacts/operations';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { addContact } from 'redux/contacts/operations';
 import { selectItems } from 'redux/contacts/selectors';
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
@@ -25,7 +24,7 @@ const schema = yup.object().shape({
     number: yup.string().required(),
 });
 
-function ContactForm() {
+export function ContactForm() {
     const dispatch = useDispatch();
     const items = useSelector(selectItems);
     const handleSubmit = (values, { resetForm }) => {
@@ -54,18 +53,14 @@ function ContactForm() {
             >
                 {(props) => (
                     <Form >
-                        <Field
-                            type='text'
-                            name='name'
-                            required
-                        >
+                        <Field type='text' name='name' required>
                             {({ field, form }) => (
                                 <FormControl mb={1} isInvalid={form.errors.name}>
-                                    <Input {...field} htmlSize='md' color='#FFFFF0' variant='flushed'
-                                    placeholder='Name'
-                                     _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                    focusBorderColor='#FFFFF0'
-                                    pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+                                    <Input {...field} autoComplete='off'
+                                        _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
+                                        color='#FFFFF0'
+                                        placeholder='Name'
+                                        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                                     />
                                     <Box h={34} w={255}>
                                         {form.values.name !== '' ? (
@@ -80,18 +75,13 @@ function ContactForm() {
                                 </FormControl>
                             )}
                         </Field>
-                        <Field
-                            type='tel'
-                            name='number'
-                            required
-                        >
+                        <Field type='tel' name='number' required>
                             {({ field, form }) => (
                                 <FormControl mb={1} isInvalid={form.errors.name}>
-                                    <Input {...field} htmlSize='md' color='#FFFFF0'
-                                        variant='flushed' inputMode='tel'
-                                        placeholder='Number'
-                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                        focusBorderColor='#FFFFF0'
+                                    <Input {...field} autoComplete='off'
+                                        _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
+                                        color='#FFFFF0'
+                                        inputMode='tel' placeholder='Number'
                                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                                     />
                                     <Box h={34} w={255}>
@@ -104,9 +94,8 @@ function ContactForm() {
                                 </FormControl>
                             )}
                         </Field>
-                        <Button p={2} w={120}
-                            fontSize={14}
-                            fontWeight='bold'
+                        <Button p={1} w={120}
+                            fontSize='xs'
                             type='submit' name='Add contact'>
                             Add contact
                         </Button>
@@ -120,5 +109,3 @@ function ContactForm() {
 ContactForm.propTypes = {
     handleSubmit: PropTypes.func,
 };
-
-export default ContactForm;

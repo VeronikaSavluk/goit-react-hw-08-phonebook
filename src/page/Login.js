@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import LoginForm from 'components/LoginForm';
 import { selectError } from 'redux/auth/selectors';
+import {LoginForm} from 'components';
 import { Flex, Box, Heading, Text} from '@chakra-ui/react';
 
 const Login = () => {
@@ -9,13 +9,14 @@ const Login = () => {
 
     return <Flex direction='column' align='center'>
         <Heading as='h2' mt={20} mb={30}
-            fontSize={30} fontWeight={500}
-            textAlign='center' noOfLines={1}
-        >Log in</Heading>
+            fontSize="3xl" fontWeight='medium'
+            textAlign='center' noOfLines={1}>
+            Log in
+        </Heading>
         <LoginForm />
         <Box mt={10} h={30}>
             {error === 'Login error' && (
-            <Text fontSize={16}>
+            <Text fontSize='md'>
                 {error}
             </Text>)}
         </Box>

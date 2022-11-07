@@ -1,13 +1,12 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import AppBar from 'components/AppBar';
+import {AppBar} from 'components';
 import { Container } from '@chakra-ui/react';
 
-const Layout = () => {
+export const Layout = () => {
 
     return (
-        <Container border='none' px={{base: '20px', md: '30px'}}
-        >
+        <Container border='none' px={{base: '20px', md: '30px'}}>
             <AppBar />
             <Suspense fallback={null}>
                 <Outlet />
@@ -15,5 +14,3 @@ const Layout = () => {
         </Container>
     );
 };
-
-export default Layout;

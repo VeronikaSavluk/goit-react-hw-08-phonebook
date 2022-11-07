@@ -25,7 +25,7 @@ const schema = yup.object().shape({
     password: yup.string().required(),
 });
 
-const RegisterForm = () => {
+export const RegisterForm = () => {
     const dispatch = useDispatch();
 
     const handleSubmit = (values, { resetForm }) => {
@@ -36,7 +36,7 @@ const RegisterForm = () => {
     return (
         <Flex direction='column'
             align='center'
-            w={280} h={290} p={3}
+            w={280} h={310} p={3}
             border={2}
             borderColor='#FFFFF0'
             borderStyle='solid'
@@ -49,20 +49,17 @@ const RegisterForm = () => {
             >
                 {(props) => (
                     <Form>
-                        <Field
-                            type='text'
-                            name='name'
-                            required
-                        >
+                        <Field type='text' name='name' required>
                             {({ field, form }) => (
                                 <FormControl isInvalid={form.errors.name}>
-                                    <Input {...field} htmlSize='md' color='#FFFFF0' variant='flushed'
+                                    <Input {...field}
+                                        autoComplete='off'
+                                        color='#FFFFF0'
                                         placeholder='Name'
-                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                        focusBorderColor='#FFFFF0'
+                                        _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
                                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                                     />
-                                    <Box h={34} w={255}>
+                                    <Box h='34px' w={255}>
                                         {form.values.name !== '' ? (
                                         <FormHelperText color='#FFFFF0' fontSize={7}>
                                             Name may contain only letters, apostrophe, dash and spaces.
@@ -75,20 +72,17 @@ const RegisterForm = () => {
                                 </FormControl>
                             )}
                         </Field>
-                        <Field
-                            type='email'
-                            name='email'
-                            required
-                        >
+                        <Field type='email' name='email' required>
                             {({ field, form }) => (
                                 <FormControl isInvalid={form.errors.name}>
-                                    <Input {...field} htmlSize='md' color='#FFFFF0' variant='flushed'
+                                    <Input {...field}
+                                        autoComplete='off'
+                                        color='#FFFFF0'
                                         placeholder='Email'
-                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                        focusBorderColor='#FFFFF0'
+                                        _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
                                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                                     />
-                                    <Box h={34} w={255}>
+                                    <Box h='34px' w={255}>
                                         {form.values.email !== '' ? (
                                         <FormHelperText fontSize={7} color='#FFFFF0'>
                                             Email must be a valid email address
@@ -98,19 +92,13 @@ const RegisterForm = () => {
                                 </FormControl>
                             )}
                         </Field>
-                        <Field
-                            type='password'
-                            name='password'
-                            required
-                        >
+                        <Field type='password' name='password' required>
                             {({ field, form }) => (
                                     <FormControl isInvalid={form.errors.name}>
-                                        <Input {...field} htmlSize='md' color='#FFFFF0'
-                                            placeholder='Password'
-                                            _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                            focusBorderColor='#FFFFF0'
-                                            variant='flushed'
-                                        />
+                                    <Input {...field} autoComplete='off'
+                                        placeholder='Password' color='#FFFFF0'
+                                        _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
+                                    />
                                         <Box h={34} w={255}>
                                             <FormErrorMessage fontSize={7} color='red'>Password is required</FormErrorMessage>
                                         </Box>
@@ -118,9 +106,7 @@ const RegisterForm = () => {
                                 )
                             }
                         </Field>
-                        <Button p={2} w={100}
-                            fontSize={14} fontWeight='bold'
-                            type='submit' name='Register'>
+                        <Button w={100} type='submit' name='Register'>
                             Register
                         </Button>
                     </Form>
@@ -133,5 +119,3 @@ const RegisterForm = () => {
 RegisterForm.propTypes = {
     handleSubmit: PropTypes.func,
 };
-
-export default RegisterForm;

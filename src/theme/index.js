@@ -1,7 +1,6 @@
 import { extendTheme } from '@chakra-ui/react';
-import { breakpoints } from './foundations/breakpoints';
-import { Container } from './components/container';
-import { Button } from './components/button';
+import { breakpoints } from 'theme/foundations';
+import { Container, Button, Input } from 'theme/components';
 import { styles } from './styles';
 
 const theme = {
@@ -10,6 +9,7 @@ const theme = {
     components: {
         Button,
         Container,
+        Input,
     },
 };
 

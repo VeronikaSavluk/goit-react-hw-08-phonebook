@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { setFilter } from '../redux/contacts/filterSlice';
 import { Input } from '@chakra-ui/react';
 
-const FilterContactList = () => {
+export const FilterContactList = () => {
     const dispatch = useDispatch();
 
     const handleChange = e => {
@@ -12,11 +12,10 @@ const FilterContactList = () => {
         dispatch(setFilter(form.value.toLowerCase()));
     };
 
-    return <Input htmlSize='md' color='#FFFFF0' variant='flushed'
+    return <Input color='#FFFFF0'
         placeholder='Find contacts by name'
-        _placeholder={{ opacity: 0.4, color: 'inherit' }}
+        _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
         fontSize={{base:'sm', md: 'md'}}
-        focusBorderColor='#FFFFF0'
         type='text'
         name='value'
         onChange={handleChange}
@@ -26,6 +25,4 @@ const FilterContactList = () => {
 FilterContactList.propTypes = {
     handleChange: PropTypes.func,
     QueryInputId: PropTypes.func,
-}
-
-export default FilterContactList;
+};

@@ -20,7 +20,7 @@ const schema = yup.object().shape({
     password: yup.string().required(),
 });
 
-const LoginForm = () => {
+export const LoginForm = () => {
     const dispatch = useDispatch();
     const handleSubmit = (values, { resetForm }) => {
         dispatch(logIn(values));
@@ -30,7 +30,7 @@ const LoginForm = () => {
     return (
         <Flex direction='column'
             align='center'
-            w={280} h={200} p={3}
+            w={280} h={170} p={3}
             border={2}
             borderColor='#FFFFF0'
             borderStyle='solid'
@@ -43,40 +43,38 @@ const LoginForm = () => {
             >
                 {(props) => (
                     <Form>
-                        <Field
-                            type='email'
-                            name='email'
-                        >
+                        <Field type='email' name='email' required>
                             {({ field, form }) => (
-                                    <FormControl mb={1} w='250px'>
-                                        <Input {...field} htmlSize='md' mb={5}
+                                    <FormControl w='250px'>
+                                    <Input {...field}
+                                        autoComplete='off'
+                                        _placeholder={{
+                                            opacity: 0.4,
+                                            color: '#FFFFF0'
+                                        }}
                                         placeholder='Email'
-                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                        focusBorderColor='#FFFFF0'
-                                        color='#FFFFF0' variant='flushed'
+                                        color='#FFFFF0'
                                     />
                                     </FormControl>
                                 )
                             }
                         </Field>
-                        <Field
-                            type='password'
-                            name='password'
-                            required
-                        >
+                        <Field type='password' name='password' required>
                             {({ field, form }) => (
-                                <FormControl mb={1} w='250px'>
-                                    <Input {...field} htmlSize='md' mb={5}
+                                <FormControl w='250px'>
+                                    <Input {...field}
+                                        autoComplete='off'
+                                        _placeholder={{
+                                            opacity: 0.4,
+                                            color: '#FFFFF0' }}
                                         placeholder='Password'
-                                        _placeholder={{ opacity: 0.4, color: 'inherit' }}
-                                        focusBorderColor='#FFFFF0'
-                                        color='#FFFFF0' variant='flushed'
+                                        color='#FFFFF0'
                                     />
                                 </FormControl>
                             )}
                         </Field>
-                        <Button p={2}
-                            w={100} fontSize={14}
+                        <Button p={2} my={5}
+                            w={100} fontSize='sm'
                             fontWeight='bold'
                             type='submit' name='Log in'>Log in
                         </Button>
@@ -92,5 +90,3 @@ LoginForm.propTypes = {
     field: PropTypes.object,
     form: PropTypes.object,
 };
-
-export default LoginForm;
