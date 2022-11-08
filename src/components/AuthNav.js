@@ -1,11 +1,23 @@
 import { NavLink } from 'react-router-dom';
-import { List, ListItem } from '@chakra-ui/react';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink
+} from '@chakra-ui/react';
 
 export const AuthNav = () => {
     return (
-        <List as='nav' fontWeight='bold' fontSize='xl'>
-            <ListItem as={NavLink} to='/register' mr={15}>Register</ListItem>
-            <ListItem as={NavLink} to='/login'>Log In</ListItem>
-        </List>
+        <Breadcrumb fontWeight='bold' fontSize='xl' separator=' '>
+        <BreadcrumbItem>
+            <BreadcrumbLink as={NavLink} to='/register' isCurrentPage>
+            Register
+            </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+            <BreadcrumbLink as={NavLink} to='/login'>
+            Log in
+            </BreadcrumbLink>
+        </BreadcrumbItem>
+        </Breadcrumb>
     );
 };
