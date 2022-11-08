@@ -25,17 +25,17 @@ export function App() {
       {isRefreshing
         ? <Loader />
         : <Routes>
-          <Route path='/' element={<Layout />}>
+          <Route exact path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route path='/register'
+            <Route exact path='/register'
               element={<RestrictedRoute redirectTo='/contacts'
                 component={<RegisterPage />} />}
             />
-            <Route path='/login'
+            <Route exact path='/login'
               element={<RestrictedRoute redirectTo='/contacts'
                 component={<LoginPage />} />}
             />
-            <Route path='/contacts'
+            <Route exact path='/contacts'
               element={<PrivateRoute redirectTo='/login'
                 component={<ContactsPage />} />}
             />
