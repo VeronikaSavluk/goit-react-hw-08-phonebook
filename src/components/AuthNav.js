@@ -1,18 +1,12 @@
-import {
-    Breadcrumb,
-    BreadcrumbItem,
-    BreadcrumbLink,
-} from '@chakra-ui/react';
+import { NavLink } from 'react-router-dom';
+import { Flex, Spacer } from '@chakra-ui/react';
 
 export const AuthNav = () => {
     return (
-        <Breadcrumb separator=' ' fontWeight='black' fontSize='xl'>
-            <BreadcrumbItem>
-                <BreadcrumbLink href='/register'>Register</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbItem>
-                <BreadcrumbLink href='/login'>Log In</BreadcrumbLink>
-            </BreadcrumbItem>
-        </Breadcrumb>
+        <Flex fontWeight='bold' fontSize='xl'>
+            <NavLink to='/register'>Register</NavLink>
+            <Spacer w='20px'/>
+            <NavLink to='/login'>Log In</NavLink>
+        </Flex>
     );
 };
