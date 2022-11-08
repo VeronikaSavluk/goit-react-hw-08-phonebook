@@ -1,12 +1,11 @@
 import { NavLink } from 'react-router-dom';
-import { Flex, Spacer } from '@chakra-ui/react';
+import { List, ListItem } from '@chakra-ui/react';
 
 export const AuthNav = () => {
     return (
-        <Flex fontWeight='bold' fontSize='xl'>
-            <NavLink to='/register'>Register</NavLink>
-            <Spacer w='20px'/>
-            <NavLink to='/login'>Log In</NavLink>
-        </Flex>
+        <List as='nav' fontWeight='bold' fontSize='xl'>
+            <ListItem as={NavLink} to='/register' mr={15}>Register</ListItem>
+            <ListItem as={NavLink} to='/login'>Log In</ListItem>
+        </List>
     );
 };
