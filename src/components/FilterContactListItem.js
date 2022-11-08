@@ -15,7 +15,7 @@ export const FilterContactList = () => {
     return <Input color='#FFFFF0'
         placeholder='Find contacts by name'
         _placeholder={{ opacity: 0.4, color: '#FFFFF0' }}
-        fontSize={{base:'sm', md: 'md'}}
+        fontSize={{base:'xs', md: 'sm'}}
         type='text'
         name='value'
         onChange={handleChange}
