@@ -7,10 +7,10 @@ import { selectIsRefreshing } from 'redux/auth/selectors';
 import { Layout, Loader, RestrictedRoute, PrivateRoute } from 'components';
 import { VStack } from '@chakra-ui/react';
 
-const HomePage = lazy(() => import('pages/Home'));
-const RegisterPage = lazy(() => import('pages/Register'));
-const LoginPage = lazy(() => import('pages/Login'));
-const ContactsPage = lazy(() => import('pages/Contacts'));
+const HomePage = lazy(() => import('../pages/Home'));
+const RegisterPage = lazy(() => import('../pages/Register'));
+const LoginPage = lazy(() => import('../pages/Login'));
+const ContactsPage = lazy(() => import('../pages/Contacts'));
 
 export function App() {
   const dispatch = useDispatch();
@@ -25,7 +25,7 @@ export function App() {
       {isRefreshing
         ? <Loader />
         : <Routes>
-          <Route exact path='/' element={<Layout />}>
+          <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route exact path='/register'
               element={<RestrictedRoute redirectTo='/contacts'
