@@ -15,10 +15,9 @@ const Login = () => {
         </Heading>
         <LoginForm />
         <Box mt={10} h={30}>
-            {error === 'Login error' && (
-            <Text fontSize='md'>
-                {error}
-            </Text>)}
+            {error === 'Login error'
+                && (<Text fontSize='md'>{error}</Text>
+            )}
         </Box>
     </Flex>
 };

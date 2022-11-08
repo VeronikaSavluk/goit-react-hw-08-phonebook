@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { Layout, Loader, RestrictedRoute, PrivateRoute } from 'components';
-import {VStack} from '@chakra-ui/react';
+import { VStack } from '@chakra-ui/react';
 
-const HomePage = lazy(() => import('page/Home'));
-const RegisterPage = lazy(() => import('page/Register'));
-const LoginPage = lazy(() => import('page/Login'));
-const ContactsPage = lazy(() => import('page/Contacts'));
+const HomePage = lazy(() => import('pages/Home'));
+const RegisterPage = lazy(() => import('pages/Register'));
+const LoginPage = lazy(() => import('pages/Login'));
+const ContactsPage = lazy(() => import('pages/Contacts'));
 
 export function App() {
   const dispatch = useDispatch();
