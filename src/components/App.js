@@ -27,15 +27,15 @@ export function App() {
         : <Routes>
           <Route path='/' element={<Layout />}>
             <Route index element={<HomePage />} />
-            <Route exact path='/register'
+            <Route path='/register'
               element={<RestrictedRoute redirectTo='/contacts'
                 component={<RegisterPage />} />}
             />
-            <Route exact path='/login'
+            <Route path='/login'
               element={<RestrictedRoute redirectTo='/contacts'
                 component={<LoginPage />} />}
             />
-            <Route exact path='/contacts'
+            <Route path='/contacts'
               element={<PrivateRoute redirectTo='/login'
                 component={<ContactsPage />} />}
             />
